@@ -1,4 +1,4 @@
-package com.rutkevich.sample.base;
+package com.rutkevich.droidcon;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

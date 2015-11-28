@@ -1,4 +1,4 @@
-package com.rutkevich.sample.base
+package com.rutkevich.droidcon
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
