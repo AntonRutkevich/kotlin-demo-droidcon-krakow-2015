@@ -8,21 +8,20 @@ import android.widget.Toast
 
 fun main(vararg args: String) {
 
-//     "Hello World"
+     "Hello World".capitalize()
 
+    val list = listOf("Google", "Samsung", "Apple", "Audi")
 
-
-
-//    val list = listOf("Google", "Samsung", "Apple", "Audi")
-
-
-
+    list.filter {
+        it.endsWith("e")
+    }
+    .map {
+        it.decapitalize()
+    }
+    .forEach {
+        println(it)
+    }
 }
-
-
-
-
-
 
 fun View.show() {
     if (visibility != View.VISIBLE) {
@@ -30,20 +29,13 @@ fun View.show() {
     }
 }
 
-
-
 @Suppress("UNCHECKED_CAST")
 fun <T : View> View.find(@IdRes id: Int): T
         = findViewById(id) as T
 
-
 fun Context.shortToast(message: String)
-        = Toast.makeText(this, message, Toast.LENGTH_SHORT)
-
-
+        = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
 fun Context.getLocationManager(): LocationManager {
-    return getSystemService(Context.LOCATION_SERVICE)
-                as LocationManager
+    return getSystemService(Context.LOCATION_SERVICE) as LocationManager
 }
-

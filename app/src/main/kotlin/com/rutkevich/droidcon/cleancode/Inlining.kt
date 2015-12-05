@@ -4,13 +4,6 @@ import android.util.Log
 import com.rutkevich.droidcon.BuildConfig
 
 
-inline fun logD (message: () -> String) {
-    if (BuildConfig.DEBUG) {
-        Log.d("TAG", message())
-    }
-}
-
-
 fun main(vararg args: String) {
 
     logD {
@@ -18,13 +11,19 @@ fun main(vararg args: String) {
         "Current stacktrace is ${Log.getStackTraceString(exception)}"
     }
 
+//    is translated to
+
+    if (BuildConfig.DEBUG) {
+        val exception = RuntimeException()
+        Log.d("TAG", "Current stacktrace is ${Log.getStackTraceString(exception)}")
+    }
 }
 
-
-
-
-
-
+inline fun logD (message: () -> String) {
+    if (BuildConfig.DEBUG) {
+        Log.d("TAG", message())
+    }
+}
 
 inline fun <T> debugOnly(lambda: () -> T): T? {
     return if (BuildConfig.DEBUG) {
@@ -34,12 +33,6 @@ inline fun <T> debugOnly(lambda: () -> T): T? {
     }
 }
 
-
-
-
-
-
-
 inline fun <T> measure(message: String, lambda: () -> T): T {
     val startTime = System.currentTimeMillis()
     val result = lambda()
@@ -47,5 +40,3 @@ inline fun <T> measure(message: String, lambda: () -> T): T {
     Log.d ("Measured", "$message $endTime ms")
     return result
 }
-
-

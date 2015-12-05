@@ -17,8 +17,10 @@ fun main(vararg args: String) {
     )
 
     Observable.from(tokens)
-            .filter { it is Token.Valid }
-            .map { it as Token.Valid }
+            // Combine operators with ease!
+//            .filter { it is Token.Valid }
+//            .map { it as Token.Valid }
+            .filterType<Token, Token.Valid>()
             .map { it.value }
             .subscribe {
                 println("Token value: $it")
@@ -28,6 +30,6 @@ fun main(vararg args: String) {
 
 
 
-//inline fun <T, reified S> Observable<T>.filterType(): Observable<S> {
-//    return filter { it is S }.map { it as S }
-//}
+inline fun <T, reified S> Observable<T>.filterType(): Observable<S> {
+    return filter { it is S }.map { it as S }
+}

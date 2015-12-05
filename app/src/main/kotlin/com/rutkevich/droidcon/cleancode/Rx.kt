@@ -20,8 +20,9 @@ class RxActivity: AppCompatActivity() {
         }
 
         intObservable
+                // non-capturing lambdas!
                 .map { it * 3 }
-                .filter { it > 0 }
+                .filterPositive()
                 .map { it * 4 }
                 .subscribe {
                     println("Managed to get here: $it")
@@ -31,4 +32,4 @@ class RxActivity: AppCompatActivity() {
 }
 
 
-//fun Observable<Int>.filterPositive() = filter { it > 0 }
+fun Observable<Int>.filterPositive() = filter { it > 0 }
