@@ -3,9 +3,10 @@ package com.rutkevich.droidcon.safety.immutability
 
 fun main(vararg args: String) {
 
+    // Java: final
     val name = "Alex"
 //    name = "John"
 
-    var age = 25
-    age = 26
+    var amount = 25
+    amount = 26
 }

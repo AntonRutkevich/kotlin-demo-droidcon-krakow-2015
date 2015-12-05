@@ -25,8 +25,8 @@ fun main(vararg args: String) {
 
 
 fun View.show() {
-    if (this.visibility != View.VISIBLE) {
-        this.visibility = View.VISIBLE
+    if (visibility != View.VISIBLE) {
+        visibility = View.VISIBLE
     }
 }
 

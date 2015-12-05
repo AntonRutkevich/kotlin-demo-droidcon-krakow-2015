@@ -14,7 +14,8 @@ inline fun logD (message: () -> String) {
 fun main(vararg args: String) {
 
     logD {
-        "Current stacktrace is ${RuntimeException().printStackTrace()}"
+        val exception = RuntimeException()
+        "Current stacktrace is ${Log.getStackTraceString(exception)}"
     }
 
 }

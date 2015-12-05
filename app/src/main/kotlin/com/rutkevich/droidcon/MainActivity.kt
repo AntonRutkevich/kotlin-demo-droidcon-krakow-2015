@@ -6,11 +6,16 @@ import android.support.v7.widget.Toolbar
 
 public class MainActivity : AppCompatActivity() {
 
+    private var toolbar: Toolbar? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(findViewById(R.id.toolbar) as Toolbar)
+        toolbar = findViewById(R.id.toolbar) as Toolbar?
+        toolbar?.setTitle("Title")
+
+        setSupportActionBar(toolbar)
     }
 
 }

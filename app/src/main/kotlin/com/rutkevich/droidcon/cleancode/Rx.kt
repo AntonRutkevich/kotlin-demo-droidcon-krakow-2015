@@ -1,24 +1,34 @@
 package com.rutkevich.droidcon.cleancode
 
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import rx.Observable
 
 
-fun main(vararg args: String) {
+class RxActivity: AppCompatActivity() {
 
-    val intObservable = Observable.create<Int> { subscriber ->
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        (1..15).forEach {
-            subscriber.onNext(it)
+        val intObservable = Observable.create<Int> { subscriber ->
+
+            (-15..15).forEach {
+                subscriber.onNext(it)
+            }
+            subscriber.onCompleted()
+
         }
-        subscriber.onCompleted()
 
+        intObservable
+                .map { it * 3 }
+                .filter { it > 0 }
+                .map { it * 4 }
+                .subscribe {
+                    println("Managed to get here: $it")
+                }
     }
 
-    intObservable
-            .map { it * 3 }
-            .filter { it % 4 == 0 }
-            .map { it * 3 }
-            .subscribe {
-                println("Managed to get here: $it")
-            }
 }
+
+
+//fun Observable<Int>.filterPositive() = filter { it > 0 }

@@ -11,6 +11,7 @@ fun generateCity(): String? {
 fun main(vararg args: String) {
     (1..10).forEach {
         val city = generateCity()
+
 //        val endsWithW = city.endsWith("w")
 
 //        println("$city ends with w: $endsWithW")
